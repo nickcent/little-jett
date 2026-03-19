@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Jett (Bobby) - 2025-2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0a;
+    color: #d4d0c8;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .stars {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    animation: twinkle var(--duration) ease-in-out infinite;
+    opacity: 0;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: var(--max-opacity); }
+  }
+
+  .hero {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .hero-photo {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 3px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 60px rgba(212, 175, 55, 0.1);
+    margin-bottom: 2.5rem;
+    animation: fadeIn 3s ease-out;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 4rem;
+    letter-spacing: 0.15em;
+    color: #e8e4dc;
+    margin-bottom: 0.5rem;
+    animation: fadeIn 3s ease-out 0.5s both;
+  }
+
+  .dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #8a8578;
+    letter-spacing: 0.3em;
+    margin-bottom: 1rem;
+    animation: fadeIn 3s ease-out 1s both;
+  }
+
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #6a6560;
+    animation: fadeIn 3s ease-out 1.3s both;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    animation: fadeIn 3s ease-out 2s both, bob 3s ease-in-out infinite;
+    color: #4a4540;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+  }
+
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  .separator {
+    text-align: center;
+    color: #3a3530;
+    margin: 3rem 0;
+    font-size: 1.5rem;
+    letter-spacing: 1em;
+  }
+
+  .story p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+    color: #b0a89a;
+  }
+
+  .story p em {
+    color: #d4c9b8;
+    font-style: italic;
+  }
+
+  .story p strong {
+    color: #e0d8cc;
+    font-weight: 400;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 3rem 0;
+  }
+
+  .gallery img {
+    width: 100%;
+    border-radius: 8px;
+    opacity: 0.85;
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+  }
+
+  .gallery img:hover {
+    opacity: 1;
+  }
+
+  .gallery .wide {
+    grid-column: 1 / -1;
+    max-height: 500px;
+    object-fit: cover;
+  }
+
+  .timeline {
+    margin: 3rem 0;
+    border-left: 1px solid #2a2520;
+    padding-left: 2rem;
+  }
+
+  .timeline-entry {
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .timeline-entry::before {
+    content: '';
+    position: absolute;
+    left: -2.35rem;
+    top: 0.5rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3a3530;
+  }
+
+  .timeline-entry:last-child::before {
+    background: #d4af37;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+  }
+
+  .timeline-date {
+    font-size: 0.8rem;
+    color: #6a6560;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-text {
+    font-size: 0.95rem;
+    color: #9a9488;
+    line-height: 1.6;
+  }
+
+  .closing {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .closing p {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #8a8578;
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .paw {
+    margin-top: 2rem;
+    font-size: 2rem;
+    opacity: 0.3;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.95);
+    z-index: 100;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox.active { display: flex; }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<section class="hero">
+  <img class="hero-photo" src="assets/jett-on-bed-1.jpeg" alt="Little Jett">
+  <h1>Little Jett</h1>
+  <div class="dates">September 2025 &mdash; March 2026</div>
+  <div class="subtitle">all black, golden eyes, bodybuilder nerd, someone's son</div>
+  <div class="scroll-hint">&darr;</div>
+</section>
+
+<div class="content">
+
+  <div class="story">
+    <p>He was born on a Tuesday evening, September 2nd, 2025, at seven o'clock. His mom Koneko gave birth to two kittens in the dressing room that had been prepared for her. Him and his sister Yuki. Their eyes were still shut for the first week.</p>
+
+    <p>His first name was <strong>Bobby</strong>. The all-black male. The difficult one to rehome &mdash; or so the plan went. But then the plan changed. <em>"I'm not letting Yuki go. We'll see how it unfolds."</em> And somehow, none of them left.</p>
+
+    <p>He grew up in the apartment and the workshop. He knocked spinach pie off the counter with his sister. He woke his owner up at 8:30 playing under the bed. He was loud, and messy, and everywhere. He was trouble.</p>
+
+    <p>Somewhere along the way, Bobby became <strong>Jett</strong>. And Jett became family.</p>
+  </div>
+
+  <div class="gallery">
+    <img src="assets/jett-blue-eyes-kitten.jpeg" alt="Jett as a tiny kitten with blue eyes" onclick="openLightbox(this)">
+    <img src="assets/jett-walking-floor.jpeg" alt="Jett walking across the apartment" onclick="openLightbox(this)">
+    <img src="assets/jett-on-bed-2.jpeg" alt="Jett relaxed on the bed" onclick="openLightbox(this)">
+    <img src="assets/koneko-grooming-kittens.jpeg" alt="Koneko grooming her kittens" onclick="openLightbox(this)">
+  </div>
+
+  <div class="story">
+    <p>In January, Yuki went missing during freezing weather. She never came back. Koneko vanished around the same time. Jett was the last one left.</p>
+
+    <p>His last month was spent at home. His owner had decided to stay in, and they were together all the time. The little bodybuilder nerd &mdash; all muscle and mischief in a tiny black frame.</p>
+
+    <p><strong>His last night</strong>, he was pulling at pants, asking for hugs. He got lots of hugs and lots of kisses. He was carried to bed because he wouldn't come by himself &mdash; he knew about the stained sheets. He got his morning kisses, same as always.</p>
+
+    <p>Then he hid. And he was quiet. And he was gone.</p>
+
+    <p>He was found on March 19th, tucked between boxes in a corner of the apartment. He had been there for days. Silent. Just a few meters away.</p>
+  </div>
+
+  <div class="separator">&middot; &middot; &middot;</div>
+
+  <div class="timeline">
+    <div class="timeline-entry">
+      <div class="timeline-date">2 September 2025</div>
+      <div class="timeline-text">Born. Koneko gives birth to two kittens at 19:00 in the dressing room.</div>
+    </div>
+    <div class="timeline-entry">
+      <div class="timeline-date">6 September 2025</div>
+      <div class="timeline-text">Eyes still shut. Koneko feeding both kittens. Doing well.</div>
+    </div>
+    <div class="timeline-entry">
+      <div class="timeline-date">4 October 2025</div>
+      <div class="timeline-text">"The two male cats need to be rehomed." But not Yuki. Never Yuki.</div>
+    </div>
+    <div class="timeline-entry">
+      <div class="timeline-date">20 November 2025</div>
+      <div class="timeline-text">First mention as Jett. At the workshop, crying non-stop. Napped together on the sofa.</div>
+    </div>
+    <div class="timeline-entry">
+      <div class="timeline-date">3 January 2026</div>
+      <div class="timeline-text">Workshop lockdown with Koneko, Yuki, and Jett. Late night in the engine room together.</div>
+    </div>
+    <div class="timeline-entry">
+      <div class="timeline-date">14 January 2026</div>
+      <div class="timeline-text">Knocked the spinach pie on the floor with Yuki. Got thrown out the house. Normal cat things.</div>
+    </div>
+    <div class="timeline-entry">
+      <div class="timeline-date">19 January 2026</div>
+      <div class="timeline-text">Fed and let inside because it was cold. The last journal entry with the family together.</div>
+    </div>
+    <div class="timeline-entry">
+      <div class="timeline-date">~12 March 2026</div>
+      <div class="timeline-text">Rest in peace, little one. You were loved.</div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <p>I didn't like him at the beginning.<br>But he became my son.<br>I loved him.</p>
+    <div class="paw">🐾</div>
+  </div>
+
+</div>
+
+<script>
+  // Stars
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 2 + 1;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.setProperty('--duration', (Math.random() * 4 + 3) + 's');
+    star.style.setProperty('--max-opacity', Math.random() * 0.6 + 0.2);
+    star.style.animationDelay = Math.random() * 5 + 's';
+    starsEl.appendChild(star);
+  }
+
+  // Lightbox
+  function openLightbox(img) {
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+</script>
+
+</body>
+</html>
