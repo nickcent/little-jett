@@ -169,6 +169,28 @@
     object-fit: cover;
   }
 
+  .videos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 3rem 0;
+  }
+
+  .videos video {
+    width: 100%;
+    border-radius: 8px;
+    opacity: 0.85;
+    transition: opacity 0.5s ease;
+  }
+
+  .videos video:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 600px) {
+    .videos { grid-template-columns: 1fr; }
+  }
+
   .timeline {
     margin: 3rem 0;
     border-left: 1px solid #2a2520;
@@ -285,6 +307,15 @@
     <img src="assets/jett-walking-floor.jpeg" alt="Jett walking across the apartment" onclick="openLightbox(this)">
     <img src="assets/jett-on-bed-2.jpeg" alt="Jett relaxed on the bed" onclick="openLightbox(this)">
     <img src="assets/koneko-grooming-kittens.jpeg" alt="Koneko grooming her kittens" onclick="openLightbox(this)">
+  </div>
+
+  <div class="videos">
+    <video controls playsinline preload="metadata" poster="assets/jett-on-bed-1.jpeg">
+      <source src="assets/jett-video-1.mp4" type="video/mp4">
+    </video>
+    <video controls playsinline preload="metadata" poster="assets/jett-walking-floor.jpeg">
+      <source src="assets/jett-video-2.mp4" type="video/mp4">
+    </video>
   </div>
 
   <div class="story">
